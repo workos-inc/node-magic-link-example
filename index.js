@@ -40,7 +40,10 @@ app.post('/passwordless-auth', async (req, res) => {
     email,
     type: 'MagicLink',
   };
+  // API call to generate a new passwordless session.
   const session = await workos.passwordless.createSession(session_options);
+
+  // API call to send email, passing in session ID generate above.
   await workos.passwordless.sendSession(session.id);
 
   res.redirect('/confirmation');
@@ -56,16 +59,6 @@ app.get("/success", async (req, res) => {
   res.render("success", {
     title: "Success",
   });
-});
-
-app.get('/callback', async (req, res) => {
-  const { code } = req.query;
-  const profile = await workos.sso.getProfile({
-    code,
-    projectID,
-  });
-
-  res.redirect('/success');
 });
 /**
  * Server Activation
