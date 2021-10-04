@@ -28,10 +28,8 @@ app.use(express.static(path.join(__dirname)));
 
 
 
+// Route Definitions
 
-/**
- * Route Definitions
- */
  app.get("/", async (req, res) => {
   res.render("index.ejs", {
     title: "Home",
@@ -42,12 +40,11 @@ app.post('/passwordless-auth', async (req, res) => {
   const email = req.body.email
   const session_options = {
     email,
-    type: 'MagicLink',
-    redirect_uri: 'http://localhost:8000/callback'
+    type: 'MagicLink'
   };
   // API call to generate a new passwordless session.
   const session = await workos.passwordless.createSession(session_options);
-  console.log(session.email, session.link)
+  console.log(session)
 
   // API call to send email, passing in session ID generate above.
   await workos.passwordless.sendSession(session.id);
@@ -77,9 +74,8 @@ app.get("/success", async (req, res) => {
 
 
 
-/**
- * Server Activation
- */
+// Server Activation
+
 app.listen(port, () => {
   console.log(`Listening to requests on http://localhost:${port}`);
 });
