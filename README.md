@@ -27,7 +27,7 @@ Node.js version 10+
 
 3. Navigate to the cloned repo. 
    ```bash
-   $ cd node-sso-example
+   $ cd node-magic-link-example
    ```
 
 4. Install the dependencies. 
