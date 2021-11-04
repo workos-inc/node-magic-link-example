@@ -47,7 +47,7 @@ WORKOS_API_KEY=your_api_key_here
 WORKOS_CLIENT_ID=your_project_id_here
 ```
 
-4. Set your [Default Redirect Link](https://dashboard.workos.com/configuration) to `http://localhost:8000/success`.
+4. Update the [default Redirect URI](https://dashboard.workos.com/configuration) in the Configuration page of your WorkOS Dashboard. The URL to use is http://localhost:8000/success.
 
 ## Run the server
 
